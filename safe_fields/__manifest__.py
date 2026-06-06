@@ -2,8 +2,7 @@
     'name': "Safe Fields Framework",
     'version': '19.0.0.1',
     'summary': """
-Provides secure field types with input sanitization and validation for
-Integer, Float, Monetary, Char, and Text fields.
+Provides secure field types with input sanitization and validation for Integer, Float, Monetary, Char, and Text fields.
 """,
     'description': """
 Safe Fields Framework
@@ -57,7 +56,7 @@ Extends fields.Monetary with:
 * Protection for create(), write(), import, RPC, and API operations.
 
 SafeChar and SafeText
---------
+---------------------
 
 Extends fields.Char and fields.Text with text sanitization:
 
