@@ -9,7 +9,7 @@
     'website': "https://maizarrahman.blogpost.com",
     'category': 'Tools',
     'license': 'LGPL-3',
-    'depends': ['base', 'safe_fields'],
+    'depends': ['base'],
     'data': [
         'security/ir.model.access.csv',
         'views/safe_fields_tester_views.xml',
