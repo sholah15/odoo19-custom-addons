@@ -75,6 +75,8 @@ Security Benefits
 Example
 -------
 
+.. code:: python
+
     from odoo import fields
 
     qty = fields.SafeInteger(string="Quantity")
