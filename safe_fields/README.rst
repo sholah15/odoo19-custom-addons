@@ -85,6 +85,7 @@ Example
         string="Amount",
         currency_field="currency_id"
     )
+    currency_id = fields.Many2one("res.currency")
     name = fields.SafeChar(string="Name")
     notes = fields.SafeText(string="Notes")
 
