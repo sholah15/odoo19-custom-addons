@@ -88,6 +88,29 @@ Example
     name = fields.SafeChar(string="Name")
     notes = fields.SafeText(string="Notes")
 
+.. code:: xml
+
+    <record model="ir.ui.view" id="safe_fields_tester_form">
+      <field name="name">safe.fields.tester.form</field>
+      <field name="model">safe.fields.tester</field>
+      <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <group>
+                    <field name="name"/>
+                    <field name="notes"/>
+                    <field name="distance" widget="safe_float"/>
+                </group>
+                <group>
+                    <field name="qty" widget="safe_integer"/>
+                    <field name="price" widget="safe_monetary" options="{'currency_field': 'currency_id'}"/>
+                    <field name="currency_id"/>
+                </group>
+            </sheet>
+        </form>
+      </field>
+    </record>
+
 Notes
 -----
 
