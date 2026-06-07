@@ -1,36 +1,34 @@
 /** @odoo-module **/
 
-import { registry } from "@web/core/registry";
 import { makeView } from "@web/../tests/views/helpers";
-import { contains } from "@web/../tests/utils";
 
 QUnit.module("safe_fields", () => {
 
-    QUnit.test("safe_integer removes letters", async function (assert) {
+    QUnit.test("safe_float blocks letters and exponent", async function (assert) {
 
         await makeView({
             type: "form",
+
             resModel: "safe.fields.tester",
 
             arch: `
                 <form>
-                    <field name="qty" widget="safe_integer"/>
+                    <field name="distance"
+                           widget="safe_float"/>
                 </form>
             `,
-
-            mockRPC() {},
 
             serverData: {
                 models: {
                     "safe.fields.tester": {
                         fields: {
-                            qty: {
-                                string: "Quantity",
-                                type: "integer",
+                            distance: {
+                                string: "Distance",
+                                type: "float",
                             },
                         },
                         records: [
-                            { id: 1, qty: 0 },
+                            { id: 1, distance: 0 },
                         ],
                     },
                 },
@@ -39,7 +37,7 @@ QUnit.module("safe_fields", () => {
 
         const input = target.querySelector("input");
 
-        input.value = "123abc";
+        input.value = "12e3abc";
         input.dispatchEvent(
             new Event("input", { bubbles: true })
         );
