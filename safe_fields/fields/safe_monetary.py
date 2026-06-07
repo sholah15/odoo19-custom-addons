@@ -5,18 +5,14 @@ import math
 
 
 class SafeMonetary(fields.Monetary):
-
-    type = 'safe_monetary'
+    pass
 
     def convert_to_cache(self, value, record, validate=True):
         value = super().convert_to_cache(value, record, validate)
-
         if value is None:
             return value
-
         if math.isnan(value) or math.isinf(value):
             raise ValidationError(
                 _("Field %s contains invalid monetary value.") % self.string
             )
-
         return value

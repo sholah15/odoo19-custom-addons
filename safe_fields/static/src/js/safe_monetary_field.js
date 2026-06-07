@@ -1,7 +1,7 @@
 /** @odoo-module **/
 
 import { registry } from "@web/core/registry";
-import { MonetaryField } from "@web/views/fields/monetary/monetary_field";
+import { MonetaryField, monetaryField } from "@web/views/fields/monetary/monetary_field";
 
 export class SafeMonetaryField extends MonetaryField {
 
@@ -37,4 +37,12 @@ export class SafeMonetaryField extends MonetaryField {
     }
 }
 
-registry.category("fields").add("safe_monetary", SafeMonetaryField);
+export const safeMonetaryField = {
+    ...monetaryField,
+    component: SafeMonetaryField,
+};
+
+registry.category("fields").add(
+    "safe_monetary",
+    safeMonetaryField
+);

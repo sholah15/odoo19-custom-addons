@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="safe_fields.SafeFloatField"
+       t-inherit="web.FloatField"
+       t-inherit-mode="extension">
+
+        <xpath expr="//input" position="attributes">
+            <attribute name="t-on-input">onInput</attribute>
+        </xpath>
+
+    </t>
+
+</templates>

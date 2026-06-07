@@ -111,7 +111,9 @@ HTML sanitization instead of SafeChar or SafeText.
     'auto_install': False,
     "assets": {
         "web.assets_backend": [
+            "safe_fields/static/src/xml/safe_integer_field.xml",
             "safe_fields/static/src/js/safe_integer_field.js",
+            "safe_fields/static/src/xml/safe_float_field.xml",
             "safe_fields/static/src/js/safe_float_field.js",
             "safe_fields/static/src/js/safe_monetary_field.js",
         ],
