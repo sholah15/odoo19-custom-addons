@@ -19,6 +19,8 @@ export class SafeIntegerField extends IntegerField {
     }
 }
 
+SafeIntegerField.template = "safe_fields.SafeIntegerField";
+
 export const safeIntegerField = {
     ...integerField,
     component: SafeIntegerField,
