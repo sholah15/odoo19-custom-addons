@@ -36,6 +36,8 @@ export class SafeFloatField extends FloatField {
     }
 }
 
+SafeFloatField.template = "safe_fields.SafeFloatField";
+
 export const safeFloatField = {
     ...floatField,
     component: SafeFloatField,
