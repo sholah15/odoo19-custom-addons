@@ -22,7 +22,6 @@ INVISIBLE_CHARS = [
     '\u200c',
     '\u200d',
     '\u202e',  # RLO
-    '\u00a0',  # NBSP
 ]
 
 
@@ -32,6 +31,9 @@ def sanitize_text_input(value):
 
     # Normalize unicode
     value = unicodedata.normalize("NFC", value)
+
+    # Replace NBSP with regular space
+    value = value.replace('\u00a0', ' ')
 
     # Remove invisible chars
     for ch in INVISIBLE_CHARS:

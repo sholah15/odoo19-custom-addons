@@ -8,7 +8,13 @@ class SafeInteger(fields.Integer):
     pass
 
     def convert_to_cache(self, value, record, validate=True):
-        value = super().convert_to_cache(value, record, validate)
+        try:
+            value = super().convert_to_cache(value, record, validate)
+        except (ValueError, TypeError):
+            # Ubah ValueError (karena diisi huruf) dan TypeError menjadi ValidationError
+            raise ValidationError(
+                _("Field %s must be an integer.") % self.string
+            )
         if value is None:
             return value
         if not isinstance(value, int):
@@ -18,7 +24,13 @@ class SafeInteger(fields.Integer):
         return value
 
     def convert_to_write(self, value, record):
-        value = super().convert_to_write(value, record)
+        try:
+            value = super().convert_to_write(value, record)
+        except (ValueError, TypeError):
+            # Ubah ValueError (karena diisi huruf) dan TypeError menjadi ValidationError
+            raise ValidationError(
+                _("Field %s must be an integer.") % self.string
+            )
         if value is None:
             return value
         if not isinstance(value, int):
