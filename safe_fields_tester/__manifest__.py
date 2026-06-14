@@ -11,6 +11,7 @@
     'license': 'LGPL-3',
     'depends': [
         'base',
+        'web',
         'safe_fields',
     ],
     'data': [

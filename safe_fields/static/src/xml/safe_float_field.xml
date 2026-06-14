@@ -3,7 +3,7 @@
 
     <t t-name="safe_fields.SafeFloatField"
        t-inherit="web.FloatField"
-       t-inherit-mode="extension">
+       t-inherit-mode="primary">
 
         <xpath expr="//input" position="attributes">
             <attribute name="t-on-input">onInput</attribute>

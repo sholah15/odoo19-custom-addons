@@ -105,7 +105,7 @@ HTML sanitization instead of SafeChar or SafeText.
     'website': "https://maizarrahman.blogspot.com",
     'category': 'Tools',
     'license': 'LGPL-3',
-    'depends': ['base'],
+    'depends': ['base', 'web'],
     'data': [],
     'installable': True,
     'auto_install': False,
