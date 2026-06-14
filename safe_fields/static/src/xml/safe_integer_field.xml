@@ -3,7 +3,7 @@
 
     <t t-name="safe_fields.SafeIntegerField"
         t-inherit="web.IntegerField"
-        t-inherit-mode="extension">
+        t-inherit-mode="primary">
 
         <xpath expr="//input" position="attributes">
             <attribute name="t-on-input">onInput</attribute>

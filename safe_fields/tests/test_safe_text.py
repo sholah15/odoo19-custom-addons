@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+# pyrefly: ignore [missing-import]
 from odoo.tests.common import TransactionCase
 
 PAYLOADS = [
@@ -9,20 +11,24 @@ PAYLOADS = [
 
 
 class TestSafeText(TransactionCase):
+    """Kelas pengujian untuk memverifikasi fungsionalitas SafeText (sanitasi teks panjang)."""
 
     def test_script_removed(self):
+        """Memastikan tag script dihapus sepenuhnya."""
         rec = self.env['safe.field.test'].create({
             'notes': '<script>alert(1)</script>Hello'
         })
         self.assertEqual(rec.notes, 'Hello')
 
     def test_iframe_removed(self):
+        """Memastikan tag iframe beserta kontennya dibersihkan."""
         rec = self.env['safe.field.test'].create({
             'notes': '<iframe src=x></iframe>Hello'
         })
         self.assertEqual(rec.notes, 'Hello')
 
     def test_write_sanitized(self):
+        """Memastikan sanitasi teks juga diterapkan saat melakukan pembaruan (write)."""
         rec = self.env['safe.field.test'].create({
             'notes': 'John'
         })
@@ -32,6 +38,7 @@ class TestSafeText(TransactionCase):
         self.assertEqual(rec.notes, 'Doe')
 
     def test_mass_create(self):
+        """Memastikan pembuatan batch (mass create) membersihkan data HTML dari teks catatan."""
         vals = []
         for i in range(100):
             vals.append({
@@ -41,11 +48,12 @@ class TestSafeText(TransactionCase):
         for rec in records:
             self.assertNotIn('<b>', rec.notes)
 
-def test_xss_payloads(self):
-    for payload in PAYLOADS:
-        rec = self.env['safe.field.test'].create({
-            'notes': payload
-        })
-        self.assertNotIn('<script', rec.notes.lower())
-        self.assertNotIn('onerror', rec.notes.lower())
-        self.assertNotIn('onload', rec.notes.lower())
+    def test_xss_payloads(self):
+        """Memastikan berbagai payload XSS umum dibersihkan dengan aman dari teks catatan."""
+        for payload in PAYLOADS:
+            rec = self.env['safe.field.test'].create({
+                'notes': payload
+            })
+            self.assertNotIn('<script', rec.notes.lower())
+            self.assertNotIn('onerror', rec.notes.lower())
+            self.assertNotIn('onload', rec.notes.lower())
