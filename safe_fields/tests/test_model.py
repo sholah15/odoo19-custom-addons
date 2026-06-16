@@ -1,3 +1,4 @@
+# pyrefly: ignore [missing-import]
 from odoo import models, fields
 
 
